@@ -45,9 +45,9 @@ abstract class AppRouter {
         book: state.extra as BookEntity,
       ),
     ),
-    // GoRoute(
-    //   path: kPDFPreview,
-    //   builder: (context, state) => const PDFPreview(),
-    // ),
+    GoRoute(
+      path: kPDFPreview,
+      builder: (context, state) => const PDFPreview(),
+    ),
   ]);
 }
