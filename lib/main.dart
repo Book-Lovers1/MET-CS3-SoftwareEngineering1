@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:library_app/Features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'Features/auth/data/data_sources/auth_data_sources.dart';
-import 'Features/auth/data/repos/auth_repo_impl.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:library_app/firebase_options.dart';
 import 'Features/home/presentation/manager/bdf_preview_cubit/pdf_preview_cubit.dart';
 import 'Features/home/data/data_sources/home_remote_data_source.dart';
 import 'Features/home/data/repos/home_repo_impl.dart';
@@ -18,12 +17,9 @@ import 'constants.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-        apiKey: 'AIzaSyBtQSuGA2bZG1jHSrqVVRe1ChM4XK6QvI8',
-        appId: 'library-app-f37c4',
-        projectId: 'library-app-f37c4.appspot.com',
-        messagingSenderId: 'library-app-f37c4'),
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
